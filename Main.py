@@ -1,33 +1,52 @@
-import os
-class Stack:
-    def __init__(self, size):
-        self.items = []
-        self.size = size
+class Stack():
+    def __init__(self,Range):
+        self.Array = list()
+        self.Range = Range
+        self.top = -1
+    def Push(self,val):
+        self.top += 1
+        self.Array.append(val)
+        if(len(self.Array) > self.Range):
+            print("Overflow is occured at this point:",self.top)
+            print("\n")
+    def Pop(self):
+        if(self.top == -1):
+            print("Stack is a Empty")
+            print("Underflow condition is occured ")
+            print("\n")
+        else:
+            self.top -= 1
+            self.Array.pop()
+    def Peek(self):
+        print("The Latest Value of the Stack is :",self.Array[self.top])
+        print("\n")
+    def Display(self):
+        print("The Array of the Stack is :",self.Array)
+        print("\n")
+Range = int(input("Enter the Range of the Stack:"))
+s = Stack(Range)
+while(1):
+    print("Press 1 for Push")
+    print("Press 2 for Pop")
+    print("Press 3 for Peek")
+    print("Press 4 Display\n")
 
-    def is_empty(self):
-        # Write code here
+    option = int(input("Enter the Key to Choose:"))
+    if(option == 1):
+        val = int(input("Enter the Value to Push:"))
+        s.Push(val)
+    elif(option == 2):
+        s.Pop()
+    elif(option == 3):
+        s.Peek()
+    elif(option == 4):
+        s.Display()
+    else:
+        print("You have Pressed the Wrong key:",option)
+        if(True):
+            val = int(input("Press 10 to stop the Program:"))
+            if(val == 10):
+                break
+            else:
+                continue
 
-    def is_full(self):
-        # Write code here
-
-    def push(self, data):
-        if not self.is_full():
-            # Write code here
-
-    def pop(self):
-        if not self.is_empty():
-            # Write code here
-
-    def status(self):
-        # Write code here
-
-# Do not change the following code
-size, queries = map(int, input().rstrip().split())
-stack = Stack(size)
-for line in range(queries):
-    values = list(map(int, input().rstrip().split()))
-    if values[0] == 1:
-        stack.push(values[1])
-    elif values[0] == 2:
-        stack.pop()
-stack.status()
