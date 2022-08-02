@@ -23,30 +23,12 @@ class Stack():
         for elements in self.items:
             print(elements)
    
-Range = int(input("Enter the Range of the Stack:"))
-s = Stack(Range)
-while(1):
-    print("Press 1 for Push")
-    print("Press 2 for Pop")
-    print("Press 3 for Peek")
-    print("Press 4 Display\n")
-
-    option = int(input("Enter the Key to Choose:"))
-    if(option == 1):
-        val = int(input("Enter the Value to Push:"))
-        s.Push(val)
-    elif(option == 2):
-        s.Pop()
-    elif(option == 3):
-        s.Peek()
-    elif(option == 4):
-        s.Display()
-    else:
-        print("You have Pressed the Wrong key:",option)
-        if(True):
-            val = int(input("Press 10 to stop the Program:"))
-            if(val == 10):
-                break
-            else:
-                continue
-
+Range,queries = map(int, input().rstrip().split())
+stack = Stack(Range)
+for line in range(queries):
+    values = list(map(int, input().rstrip().split()))
+    if values[0] == 1:
+        stack.push(values[1])
+    elif values[0] == 2:
+        stack.pop()
+stack.status()
