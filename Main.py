@@ -1,30 +1,34 @@
 import os
-class Stack():
-    """The class implements a stack"""
-    def __init__(self,Range):
+class Stack:
+    def __init__(self, size):
         self.items = []
-        self.size=Range
-        
+        self.size = size
+
     def is_empty(self):
         return len(self.items)==0
-    
+    """It returns true if stack is empty otherwise it returns false"""
+
     def is_full(self):
         return len(self.items)==self.size
-    
-    def Push(self,data):
+    """It returns true if stack is full otherwise it returns false"""
+
+    def push(self, data):
         if not self.is_full():
             self.items.append(data)
-            
-    def Pop(self):
+    """It pushes an element to stack if stack is not full"""
+        
+    def pop(self):
         if not self.is_empty():
             self.items.pop(-1)
-            
+
     def status(self):
-        for elements in self.items:
-            print(elements)
-   
-Range,queries = map(int, input().rstrip().split())
-stack = Stack(Range)
+        for elem in self.items:
+            print(elem)
+    """Display the stack"""
+
+# Do not change the following code
+size, queries = map(int, input().rstrip().split())
+stack = Stack(size)
 for line in range(queries):
     values = list(map(int, input().rstrip().split()))
     if values[0] == 1:
