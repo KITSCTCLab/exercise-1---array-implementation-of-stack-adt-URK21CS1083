@@ -1,28 +1,28 @@
+import os
 class Stack():
+    """The class implements a stack"""
     def __init__(self,Range):
-        self.Array = list()
-        self.Range = Range
-        self.top = -1
-    def Push(self,val):
-        self.top += 1
-        self.Array.append(val)
-        if(len(self.Array) > self.Range):
-            print("Overflow is occured at this point:",self.top)
-            print("\n")
+        self.items = []
+        self.size=Range
+        
+    def is_empty(self):
+        return len(self.items)==0
+    
+    def is_full(self):
+        return len(self.items)==self.size
+    
+    def Push(self,data):
+        if not self.is_full():
+            self.items.append(data)
+            
     def Pop(self):
-        if(self.top == -1):
-            print("Stack is a Empty")
-            print("Underflow condition is occured ")
-            print("\n")
-        else:
-            self.top -= 1
-            self.Array.pop()
-    def Peek(self):
-        print("The Latest Value of the Stack is :",self.Array[self.top])
-        print("\n")
-    def Display(self):
-        print("The Array of the Stack is :",self.Array)
-        print("\n")
+        if not self.is_empty():
+            self.items.pop(-1)
+            
+    def status(self):
+        for elements in self.items:
+            print(elements)
+   
 Range = int(input("Enter the Range of the Stack:"))
 s = Stack(Range)
 while(1):
